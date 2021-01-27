@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home({ characters }) {
   return (
     <div>
-      {characters.map((character) => (
+      {characters.filter(character => character).map((character) => (
         <Link href={`/characters/${character._id}`} key={character._id}>
           <a style={{ display: "block" }}>
             {character.firstname} {character.lastname || ""}
