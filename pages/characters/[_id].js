@@ -1,9 +1,7 @@
 export default function Character({ character }) {
   return (
     <div>
-      <h1>
-        {character.firstname} {character.lastname}
-      </h1>
+      <h1>{character.firstname}</h1>
     </div>
   );
 }
@@ -11,6 +9,8 @@ export default function Character({ character }) {
 export async function getStaticPaths() {
   const response = await fetch("https://officeapi.dev/api/characters");
   const data = await response.json();
+
+  console.log(data.data);
 
   return {
     paths: data.data.map((character) => ({
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const response = await fetch(
-    "https://officeapi.dev/api/characters/5e93b4a43af44260882e33b0"
+    `https://officeapi.dev/api/characters/${params._id}`
   );
   const data = await response.json();
 

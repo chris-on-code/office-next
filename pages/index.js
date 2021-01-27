@@ -3,18 +3,14 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
 export default function Home({ characters }) {
-  console.log(characters);
-
   return (
     <div>
       {characters.map((character) => (
-        <>
-          <Link href={`/characters/${character._id}`} key={character._id}>
-            <a style={{ display: "block" }}>
-              {character.firstname} {character.lastname}
-            </a>
-          </Link>
-        </>
+        <Link href={`/characters/${character._id}`} key={character._id}>
+          <a style={{ display: "block" }}>
+            {character.firstname} {character.lastname || ""}
+          </a>
+        </Link>
       ))}
     </div>
   );
